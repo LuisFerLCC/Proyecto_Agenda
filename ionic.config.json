@@ -1,0 +1,7 @@
+{
+  "name": "Proyecto_Agenda",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
