@@ -24,4 +24,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./favoritos/favoritos.page').then((m) => m.FavoritosPage),
   },
+  {
+    path: 'editar/:id',
+    loadComponent: () =>
+      import('./editar/editar.page').then((m) => m.EditarPage),
+  },
 ];

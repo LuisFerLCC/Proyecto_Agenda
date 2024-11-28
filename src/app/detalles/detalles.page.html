@@ -44,7 +44,7 @@
             Compartir
           </ion-button>
 
-          <ion-button expand="full">
+          <ion-button expand="full" [routerLink]="['/editar', 0]">
             <ion-icon slot="start" name="create"></ion-icon>
             Editar
           </ion-button>
@@ -57,12 +57,12 @@
       </ion-row>
     </ion-grid>
   </ion-card>
+
+  <ion-alert
+    trigger="delete"
+    header="Eliminar evento"
+    message="¿Estás seguro de que quieres eliminar este evento?"
+    [buttons]="botones"
+  ></ion-alert>
   }
 </ion-content>
-
-<ion-alert
-  trigger="delete"
-  header="Eliminar evento"
-  message="¿Estás seguro de que quieres eliminar este evento?"
-  [buttons]="botones"
-></ion-alert>

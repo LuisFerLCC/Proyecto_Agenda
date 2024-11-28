@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { IonicModule } from '../modules/ionic/ionic.module';
 
@@ -8,7 +9,7 @@ import { IonicModule } from '../modules/ionic/ionic.module';
   templateUrl: './detalles.page.html',
   styleUrls: ['./detalles.page.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule],
+  imports: [IonicModule, FormsModule, RouterModule],
 })
 export class DetallesPage {
   botones = [
