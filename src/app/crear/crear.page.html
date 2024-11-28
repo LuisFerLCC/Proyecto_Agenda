@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Nombre del Evento</ion-label>
+    <ion-input required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-input required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Fecha</ion-label>
+    <ion-input required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Hora</ion-label>
+    <ion-input required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Lugar</ion-label>
+    <ion-input required></ion-input>
+  </ion-item>
+
+  <ion-button expand="full">Tomar Foto</ion-button>
+
+  <ion-button expand="full" [routerLink]="['/home']">Guardar Evento</ion-button>
+  <ion-button expand="full" [routerLink]="['/home']"
+    >Cancelar Evento</ion-button
+  >
+</ion-content>

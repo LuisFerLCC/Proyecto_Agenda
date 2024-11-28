@@ -1,20 +1,48 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title routerLink="/home/">Agenda</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-searchbar
+            debounce="500"
+            placeholder="Buscar eventos"
+          ></ion-searchbar>
+        </ion-col>
+        <ion-col size="auto">
+          <ion-button color="danger" shape="round" routerLink="/home/crear">
+            <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+          </ion-button>
+          <ion-button color="danger" shape="round" routerLink="/favoritos">
+            <ion-icon slot="icon-only" name="heart"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    @for (evento of eventos; track evento.id) {
+    <ion-item [routerLink]="['/detalles', evento.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="evento.fotoUrl" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>
+          {{ evento.titulo }} @if (evento.esFavorito) {
+          <ion-icon name="heart" slot="end"></ion-icon>
+          }
+        </h2>
+        <p>
+          {{ evento.descripcion }} <br />
+          <small>{{ formatearFecha(evento.fecha) }}</small>
+        </p>
+      </ion-label>
+    </ion-item>
+    }
+  </ion-list>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <router-outlet></router-outlet>
 </ion-content>

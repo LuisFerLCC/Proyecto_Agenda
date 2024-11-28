@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>title</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (true) {
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="auto">
+          <ion-img
+            [src]="'assets/default-image.jpg'"
+            style="width: 500px; height: 500px"
+          ></ion-img>
+        </ion-col>
+        <ion-col>
+          <ion-card-header>
+            <ion-card-title>card-title</ion-card-title>
+            <ion-card-subtitle>card-subtitle</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h2>Titulo</h2>
+            <p>Titulo</p>
+            <h2>Descripción</h2>
+            <p>Descripción</p>
+            <h2>Fecha</h2>
+            <p>Fecha</p>
+            <h2>Hora</h2>
+            <p>Hora</p>
+            <h2>Lugar</h2>
+            <p>Lugar</p>
+          </ion-card-content>
+          <ion-button expand="full">
+            {{ true ? 'Quitar de Favoritos' : 'Añadir a Favoritos' }}
+          </ion-button>
+          <ion-button expand="full"> Compartir </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  }
+</ion-content>
