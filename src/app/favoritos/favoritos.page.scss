@@ -1,0 +1,31 @@
+ion-header {
+  background-color: #f8f8f8;
+}
+
+ion-toolbar {
+  --background: #f4364c;
+}
+
+ion-title {
+  color: white;
+}
+
+ion-item {
+  --background: #ffffff;
+  --border-radius: 10px;
+  margin: 10px 0;
+}
+
+ion-thumbnail img {
+  border-radius: 10px;
+}
+
+ion-label h2 {
+  font-weight: bold;
+  color: #333;
+}
+
+ion-label p {
+  color: #888;
+  font-size: 14px;
+}
