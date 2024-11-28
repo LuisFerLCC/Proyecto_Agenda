@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { addOutline, heart } from 'ionicons/icons';
+import { addOutline, camera, close, heart, save } from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,10 @@ export class AppComponent {
   constructor() {
     addIcons({
       'add-outline': addOutline,
+      camera,
+      close,
       heart,
+      save,
     });
   }
 }

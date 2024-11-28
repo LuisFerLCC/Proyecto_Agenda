@@ -11,18 +11,26 @@
   </ion-item>
 
   <ion-item>
+    <ion-select label="Categoría" placeholder="Seleccionar...">
+      @for (categoria of categorias; track categoria) {
+      <ion-select-option [value]="categoria">{{ categoria }}</ion-select-option>
+      }
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
     <ion-label position="floating">Descripción</ion-label>
     <ion-input required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Fecha</ion-label>
-    <ion-input required></ion-input>
+    <ion-input type="date" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Hora</ion-label>
-    <ion-input required></ion-input>
+    <ion-input type="time" required></ion-input>
   </ion-item>
 
   <ion-item>
@@ -30,10 +38,20 @@
     <ion-input required></ion-input>
   </ion-item>
 
-  <ion-button expand="full">Tomar Foto</ion-button>
+  <div class="img-container">
+    <img src="https://picsum.photos/720/1280" alt="Foto del Evento" />
+  </div>
 
-  <ion-button expand="full" [routerLink]="['/home']">Guardar Evento</ion-button>
-  <ion-button expand="full" [routerLink]="['/home']"
-    >Cancelar Evento</ion-button
-  >
+  <ion-button expand="full">
+    <ion-icon slot="start" name="camera"></ion-icon>
+    Tomar Foto
+  </ion-button>
+  <ion-button expand="full" [routerLink]="['/home']" [disabled]="!fotoTomada">
+    <ion-icon slot="start" name="save"></ion-icon>
+    Guardar Evento
+  </ion-button>
+  <ion-button expand="full" (click)="cancelar()">
+    <ion-icon slot="start" name="close"></ion-icon>
+    Cancelar Evento
+  </ion-button>
 </ion-content>

@@ -23,6 +23,8 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardContent,
+  IonSelect,
+  IonSelectOption,
 } from '@ionic/angular/standalone';
 
 @NgModule({
@@ -48,6 +50,8 @@ import {
     IonCardHeader,
     IonCardSubtitle,
     IonCardContent,
+    IonSelect,
+    IonSelectOption,
   ],
   exports: [
     IonHeader,
@@ -71,6 +75,8 @@ import {
     IonCardHeader,
     IonCardSubtitle,
     IonCardContent,
+    IonSelect,
+    IonSelectOption,
   ],
 })
 export class IonicModule {}
