@@ -2,7 +2,18 @@ import { Component } from '@angular/core';
 
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { addOutline, camera, close, cloud, heart, save } from 'ionicons/icons';
+import {
+  addOutline,
+  camera,
+  close,
+  cloud,
+  create,
+  heart,
+  heartDislike,
+  save,
+  share,
+  trash,
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +28,12 @@ export class AppComponent {
       camera,
       close,
       cloud,
+      create,
       heart,
+      'heart-dislike': heartDislike,
       save,
+      share,
+      trash,
     });
   }
 }

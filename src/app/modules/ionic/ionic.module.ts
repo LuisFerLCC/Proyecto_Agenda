@@ -25,6 +25,7 @@ import {
   IonCardContent,
   IonSelect,
   IonSelectOption,
+  IonAlert,
 } from '@ionic/angular/standalone';
 
 @NgModule({
@@ -52,6 +53,7 @@ import {
     IonCardContent,
     IonSelect,
     IonSelectOption,
+    IonAlert,
   ],
   exports: [
     IonHeader,
@@ -77,6 +79,7 @@ import {
     IonCardContent,
     IonSelect,
     IonSelectOption,
+    IonAlert,
   ],
 })
 export class IonicModule {}

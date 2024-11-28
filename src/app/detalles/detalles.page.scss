@@ -1,0 +1,25 @@
+ion-header {
+  background-color: #f8f8f8;
+}
+
+ion-toolbar {
+  --background: #f4364c;
+}
+
+ion-title {
+  color: white;
+}
+
+ion-button {
+  margin-top: 20px;
+  --background: #f4364c;
+  --color: white;
+}
+
+ion-button[expand="full"] {
+  margin-top: 20px;
+}
+
+h2 {
+  margin-top: 20px;
+}

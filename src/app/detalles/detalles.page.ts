@@ -11,5 +11,14 @@ import { IonicModule } from '../modules/ionic/ionic.module';
   imports: [IonicModule, FormsModule],
 })
 export class DetallesPage {
-  constructor() {}
+  botones = [
+    { text: 'Cancelar', role: 'cancel', handler() {} },
+    {
+      text: 'Eliminar',
+      role: 'delete',
+      handler() {
+        console.log('Eliminar');
+      },
+    },
+  ];
 }
