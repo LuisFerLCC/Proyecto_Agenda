@@ -11,6 +11,7 @@ import {
   heart,
   heartDislike,
   save,
+  settings,
   share,
   trash,
 } from 'ionicons/icons';
@@ -32,6 +33,7 @@ export class AppComponent {
       heart,
       'heart-dislike': heartDislike,
       save,
+      settings,
       share,
       trash,
     });

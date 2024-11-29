@@ -28,5 +28,9 @@ export const routes: Routes = [
     path: 'editar/:id',
     loadComponent: () =>
       import('./editar/editar.page').then((m) => m.EditarPage),
+  },  {
+    path: 'ajustes',
+    loadComponent: () => import('./ajustes/ajustes.page').then( m => m.AjustesPage)
   },
+
 ];
