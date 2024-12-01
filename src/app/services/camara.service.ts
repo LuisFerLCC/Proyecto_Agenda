@@ -13,13 +13,13 @@ export class CamaraService {
     const foto = await Camera.getPhoto({
       quality: 90,
       allowEditing: true,
-      resultType: CameraResultType.Uri,
+      resultType: CameraResultType.Base64,
       source: this.platform.is('mobile')
         ? CameraSource.Prompt
         : CameraSource.Photos,
     });
     console.log(foto);
 
-    return foto.webPath ?? '';
+    return `data:image/jpeg;base64,${foto.base64String}`;
   }
 }
