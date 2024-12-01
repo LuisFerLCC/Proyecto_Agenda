@@ -1,8 +1,8 @@
 export interface Evento {
   id: number;
   titulo: string;
-  descripcion: string;
-  categoria: Categoria;
+  descripcion?: string;
+  categoria?: Categoria;
   fecha: Date;
   direccion: string;
   fotoUrl: string;

@@ -52,7 +52,7 @@ export class EventosService {
 
     return eventos.filter((evento) => {
       const titulo = evento.titulo.toLowerCase();
-      const categoria = evento.categoria.toLowerCase();
+      const categoria = evento.categoria?.toLowerCase() ?? '';
 
       return titulo.includes(filtroMin) || categoria.includes(filtroMin);
     });
@@ -79,6 +79,16 @@ export class EventosService {
     this.eventos.update((eventos) =>
       eventos.sort((a, b) => a.fecha.getTime() - b.fecha.getTime())
     );
+  }
+
+  parseFecha(fecha: string, hora: string) {
+    const numeros = [
+      ...fecha.split('-').map((n) => parseInt(n, 10)),
+      ...hora.split(':').map((n) => parseInt(n, 10)),
+    ];
+    numeros[1] -= 1;
+
+    return new Date(numeros[0], numeros[1], numeros[2], numeros[3], numeros[4]);
   }
 
   async guardarEventos() {

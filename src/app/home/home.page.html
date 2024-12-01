@@ -51,7 +51,8 @@
           }
         </h2>
         <p>
-          {{ evento.descripcion }} <br />
+          @if (evento.descripcion) { {{ evento.descripcion }} <br />
+          }
           <small>{{ formatearFecha(evento.fecha) }}</small>
         </p>
       </ion-label>
