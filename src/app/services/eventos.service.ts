@@ -30,11 +30,6 @@ export class EventosService {
     return this.eventos();
   }
 
-  async obtenerEventosFavoritos() {
-    const eventos = await this.obtenerEventos();
-    return eventos.filter((evento) => evento.esFavorito);
-  }
-
   async agregarEvento(evento: Evento) {
     evento.id = new Date().getTime();
 
@@ -89,6 +84,28 @@ export class EventosService {
     numeros[1] -= 1;
 
     return new Date(numeros[0], numeros[1], numeros[2], numeros[3], numeros[4]);
+  }
+
+  formatearFecha(fecha: Date): string {
+    const fechaActual = new Date();
+
+    const esEsteAnio = fecha.getFullYear() === fechaActual.getFullYear();
+    const esEsteMes = esEsteAnio && fecha.getMonth() === fechaActual.getMonth();
+    const esEstaSemana =
+      esEsteMes &&
+      fecha.getDate() >= fechaActual.getDate() &&
+      fecha.getDate() < fechaActual.getDate() + 7;
+    const esHoy = esEsteMes && fecha.getDate() === fechaActual.getDate();
+
+    return fecha.toLocaleString('es-MX', {
+      weekday: esHoy ? undefined : 'long',
+      day: esEstaSemana ? undefined : 'numeric',
+      month: esEsteMes ? undefined : 'long',
+      year: esEsteAnio ? undefined : 'numeric',
+
+      hour: 'numeric',
+      minute: '2-digit',
+    });
   }
 
   async guardarEventos() {

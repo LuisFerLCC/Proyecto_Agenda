@@ -36,26 +36,4 @@ export class HomePage {
     this.botonNubeDesactivado = true;
     await this.nubeService.init();
   }
-
-  formatearFecha(fecha: Date): string {
-    const fechaActual = new Date();
-
-    const esEsteAnio = fecha.getFullYear() === fechaActual.getFullYear();
-    const esEsteMes = esEsteAnio && fecha.getMonth() === fechaActual.getMonth();
-    const esEstaSemana =
-      esEsteMes &&
-      fecha.getDate() >= fechaActual.getDate() &&
-      fecha.getDate() < fechaActual.getDate() + 7;
-    const esHoy = esEsteMes && fecha.getDate() === fechaActual.getDate();
-
-    return fecha.toLocaleString('es-MX', {
-      weekday: esHoy ? undefined : 'long',
-      day: esEstaSemana ? undefined : 'numeric',
-      month: esEsteMes ? undefined : 'long',
-      year: esEsteAnio ? undefined : 'numeric',
-
-      hour: 'numeric',
-      minute: '2-digit',
-    });
-  }
 }

@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-list>
-    @for (evento of eventos; track evento.id) {
+    @for (evento of eventosFavoritos(); track evento.id) {
     <ion-item [routerLink]="['/detalles', evento.id]">
       <ion-thumbnail slot="start">
         <img [src]="evento.fotoUrl" />
@@ -14,8 +14,9 @@
       <ion-label>
         <h2>{{evento.titulo}}</h2>
         <p>
-          {{ evento.descripcion }} <br />
-          <small>{{ formatearFecha(evento.fecha) }}</small>
+          @if (evento.descripcion) { {{ evento.descripcion }} <br />
+          }
+          <small>{{ eventosService.formatearFecha(evento.fecha) }}</small>
         </p>
       </ion-label>
     </ion-item>
