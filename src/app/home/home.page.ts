@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { Evento } from '../models/evento.model';
 
 import { IonicModule } from '../modules/ionic/ionic.module';
+
+import { EventosService } from '../services/eventos.service';
 
 @Component({
   selector: 'app-home',
@@ -13,28 +15,17 @@ import { IonicModule } from '../modules/ionic/ionic.module';
   imports: [IonicModule, RouterModule],
 })
 export class HomePage {
-  eventos: Evento[] = [
-    {
-      id: 1,
-      titulo: 'Concierto de rock',
-      descripcion: 'Concierto de rock en el estadio de la ciudad',
-      categoria: 'Concierto',
-      fecha: new Date(2024, 10, 29, 14),
-      direccion: 'Calle 123',
-      fotoUrl: 'https://picsum.photos/56',
-      esFavorito: false,
-    },
-    {
-      id: 2,
-      titulo: 'Concierto de jazz',
-      descripcion: 'Concierto de jazz en el teatro de la ciudad',
-      categoria: 'Concierto',
-      fecha: new Date(2024, 11, 5, 13, 30),
-      direccion: 'Calle 456',
-      fotoUrl: 'https://picsum.photos/57',
-      esFavorito: true,
-    },
-  ];
+  constructor(public eventosService: EventosService) {}
+
+  eventosFiltrados = signal<Evento[] | undefined>(undefined);
+  eventosMostrados = computed(
+    () => this.eventosFiltrados() ?? this.eventosService.eventos()
+  );
+
+  async buscarEventos(filtro?: string | null) {
+    const eventos = await this.eventosService.buscarEventos(filtro ?? '');
+    this.eventosFiltrados.set(eventos);
+  }
 
   formatearFecha(fecha: Date): string {
     const fechaActual = new Date();

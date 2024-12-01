@@ -7,6 +7,7 @@
           <ion-searchbar
             debounce="500"
             placeholder="Buscar eventos"
+            (ionInput)="buscarEventos($event.target.value)"
           ></ion-searchbar>
         </ion-col>
         <ion-col size="auto">
@@ -30,7 +31,7 @@
 
 <ion-content>
   <ion-list>
-    @for (evento of eventos; track evento.id) {
+    @for (evento of eventosMostrados(); track evento.id) {
     <ion-item [routerLink]="['/detalles', evento.id]">
       <ion-thumbnail slot="start">
         <img [src]="evento.fotoUrl" />

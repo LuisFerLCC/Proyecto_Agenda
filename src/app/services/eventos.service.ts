@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 import { Storage } from '@ionic/storage-angular';
 
@@ -9,26 +9,44 @@ import { Evento } from '../models/evento.model';
 })
 export class EventosService {
   constructor(private storage: Storage) {
-    this.storage.create();
+    this.storage.create().then(() => {
+      this.obtenerEventos();
+    });
   }
 
-  private eventos: Evento[] = [];
+  eventos = signal<Evento[]>([]);
 
   async obtenerEventos() {
     const eventosJson = await this.storage.get('eventos');
     const eventos: Evento[] = eventosJson ? JSON.parse(eventosJson) : [];
 
-    this.eventos = eventos;
-    return eventos;
+    eventos.forEach((evento) => {
+      evento.fecha = new Date(evento.fecha);
+    });
+
+    this.eventos.set(eventos);
+    this.ordenarEventos();
+
+    return this.eventos();
+  }
+
+  async obtenerEventosFavoritos() {
+    const eventos = await this.obtenerEventos();
+    return eventos.filter((evento) => evento.esFavorito);
   }
 
   async agregarEvento(evento: Evento) {
     evento.id = new Date().getTime();
-    this.eventos.push(evento);
+
+    this.eventos.update((eventos) => [...eventos, evento]);
+    this.ordenarEventos();
+
     await this.guardarEventos();
   }
 
   async buscarEventos(filtro: string) {
+    if (!filtro) return;
+
     const filtroMin = filtro.toLowerCase();
     const eventos = await this.obtenerEventos();
 
@@ -51,11 +69,19 @@ export class EventosService {
   }
 
   async eliminarEvento(id: number) {
-    this.eventos = this.eventos.filter((evento) => evento.id !== id);
+    this.eventos.update((eventos) =>
+      eventos.filter((evento) => evento.id !== id)
+    );
     await this.guardarEventos();
   }
 
+  ordenarEventos() {
+    this.eventos.update((eventos) =>
+      eventos.sort((a, b) => a.fecha.getTime() - b.fecha.getTime())
+    );
+  }
+
   async guardarEventos() {
-    await this.storage.set('eventos', JSON.stringify(this.eventos));
+    await this.storage.set('eventos', JSON.stringify(this.eventos()));
   }
 }
