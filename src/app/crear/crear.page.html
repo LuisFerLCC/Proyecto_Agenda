@@ -54,7 +54,6 @@
   </ion-button>
   <ion-button
     expand="full"
-    [routerLink]="['/home']"
     [disabled]="!evento.titulo || !fecha || !hora || !evento.direccion || !evento.fotoUrl"
     (click)="crearEvento()"
   >
@@ -63,6 +62,6 @@
   </ion-button>
   <ion-button expand="full" (click)="cancelar()">
     <ion-icon slot="start" name="close"></ion-icon>
-    Cancelar Evento
+    Cancelar
   </ion-button>
 </ion-content>

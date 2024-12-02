@@ -63,6 +63,15 @@ export class EventosService {
     return eventos.find((evento) => evento.id === id);
   }
 
+  async actualizarEvento(evento: Evento) {
+    this.eventos.update((eventos) =>
+      eventos.map((e) => (e.id === evento.id ? evento : e))
+    );
+    this.ordenarEventos();
+
+    await this.guardarEventos();
+  }
+
   async eliminarEvento(id: number) {
     this.eventos.update((eventos) =>
       eventos.filter((evento) => evento.id !== id)

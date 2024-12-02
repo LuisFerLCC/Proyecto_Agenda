@@ -19,7 +19,7 @@ import { EventosService } from '../services/eventos.service';
   standalone: true,
   imports: [IonicModule, FormsModule, RouterModule],
 })
-export class DetallesPage implements OnInit {
+export class DetallesPage {
   constructor(
     public eventosService: EventosService,
     private location: Location,
@@ -60,7 +60,7 @@ Dirección: ${this.evento.direccion}`,
     });
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     const id = this.route.snapshot.paramMap.get('id');
     this.eventosService
       .obtenerEvento(parseInt(id ?? '0', 10))

@@ -6,12 +6,16 @@
 
 <ion-content>
   <ion-item>
-    <ion-label position="floating">Nombre del Evento</ion-label>
-    <ion-input required></ion-input>
+    <ion-label position="floating">Título del Evento</ion-label>
+    <ion-input required [(ngModel)]="evento.titulo"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-select label="Categoría" placeholder="Seleccionar...">
+    <ion-select
+      [(ngModel)]="evento.categoria"
+      label="Categoría"
+      placeholder="Seleccionar..."
+    >
       @for (categoria of categorias; track categoria) {
       <ion-select-option [value]="categoria">{{ categoria }}</ion-select-option>
       }
@@ -20,38 +24,42 @@
 
   <ion-item>
     <ion-label position="floating">Descripción</ion-label>
-    <ion-input required></ion-input>
+    <ion-input required [(ngModel)]="evento.descripcion"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Fecha</ion-label>
-    <ion-input type="date" required></ion-input>
+    <ion-input type="date" required [(ngModel)]="fecha"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Hora</ion-label>
-    <ion-input type="time" required></ion-input>
+    <ion-input type="time" required [(ngModel)]="hora"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Lugar</ion-label>
-    <ion-input required></ion-input>
+    <ion-label position="floating">Dirección</ion-label>
+    <ion-input required [(ngModel)]="evento.direccion"></ion-input>
   </ion-item>
 
   <div class="img-container">
-    <img src="https://picsum.photos/720/1280" alt="Foto del Evento" />
+    <img [src]="evento.fotoUrl" alt="Foto del Evento" />
   </div>
 
-  <ion-button expand="full">
+  <ion-button expand="full" (click)="tomarFoto()">
     <ion-icon slot="start" name="camera"></ion-icon>
     Tomar Foto
   </ion-button>
-  <ion-button expand="full" (click)="guardar()" [disabled]="!fotoTomada">
+  <ion-button
+    expand="full"
+    (click)="guardarEvento()"
+    [disabled]="!evento.titulo || !fecha || !hora || !evento.direccion || !evento.fotoUrl"
+  >
     <ion-icon slot="start" name="save"></ion-icon>
     Guardar Evento
   </ion-button>
   <ion-button expand="full" (click)="cancelar()">
     <ion-icon slot="start" name="close"></ion-icon>
-    Cancelar Evento
+    Cancelar
   </ion-button>
 </ion-content>
