@@ -40,10 +40,10 @@ export class EventosService {
   }
 
   async buscarEventos(filtro: string) {
-    if (!filtro) return;
+    const eventos = await this.obtenerEventos();
+    if (!filtro) return eventos;
 
     const filtroMin = filtro.toLowerCase();
-    const eventos = await this.obtenerEventos();
 
     return eventos.filter((evento) => {
       const titulo = evento.titulo.toLowerCase();
