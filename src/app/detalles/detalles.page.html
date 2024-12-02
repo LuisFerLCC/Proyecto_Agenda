@@ -5,46 +5,58 @@
 </ion-header>
 
 <ion-content>
-  @if (true) {
+  @if (evento) {
   <ion-card>
     <ion-grid>
       <ion-row>
         <ion-col size="auto">
           <ion-img
-            [src]="'https://picsum.photos/500'"
+            [src]="evento.fotoUrl"
             style="width: 500px; height: 500px"
           ></ion-img>
         </ion-col>
         <ion-col>
           <ion-card-header>
             <ion-card-title>
-              Título
+              {{ evento.titulo }} @if (evento.esFavorito) {
               <ion-icon name="heart"></ion-icon>
+              }
             </ion-card-title>
-            <ion-card-subtitle>Fecha y hora</ion-card-subtitle>
+            <ion-card-subtitle
+              >{{ eventosService.formatearFecha(evento.fecha)
+              }}</ion-card-subtitle
+            >
           </ion-card-header>
           <ion-card-content>
+            @if (evento.categoria) {
             <h2>Categoría</h2>
-            <p>categoria</p>
+            <p>{{ evento.categoria }}</p>
+            } @if (evento.descripcion) {
             <h2>Descripción</h2>
-            <p>descripcion</p>
-            <h2>Lugar</h2>
-            <p>lugar</p>
+            <p>{{ evento.descripcion }}</p>
+            }
+            <h2>Dirección</h2>
+            <p>{{ evento.direccion }}</p>
           </ion-card-content>
-          <ion-button expand="full">
-            @if (true) {
+          <ion-button
+            expand="full"
+            (click)="eventosService.cambiarFavorito(evento)"
+          >
+            @if (evento.esFavorito) {
             <ion-icon slot="start" name="heart-dislike"></ion-icon>
             Quitar de favoritos } @else {
             <ion-icon slot="start" name="heart"></ion-icon>
             Añadir a favoritos }
           </ion-button>
 
-          <ion-button expand="full">
+          @if (puedeCompartir) {
+          <ion-button expand="full" (click)="compartir()">
             <ion-icon slot="start" name="share"></ion-icon>
             Compartir
           </ion-button>
+          }
 
-          <ion-button expand="full" [routerLink]="['/editar', 0]">
+          <ion-button expand="full" [routerLink]="['/editar', evento.id]">
             <ion-icon slot="start" name="create"></ion-icon>
             Editar
           </ion-button>
