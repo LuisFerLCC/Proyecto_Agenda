@@ -8,12 +8,12 @@
   <ion-list>
     <ion-item>
       <ion-select
-        value="wifi"
+        [value]="nubeService.redPreferida"
+        (ionChange)="nubeService.cambiarRedPreferida($event.detail.value)"
         label="Sincronizar usando"
-        placeholder="Seleccionar..."
       >
         <ion-select-option value="wifi">Wi-Fi</ion-select-option>
-        <ion-select-option value="datos">Datos móviles</ion-select-option>
+        <ion-select-option value="cellular">Datos móviles</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>

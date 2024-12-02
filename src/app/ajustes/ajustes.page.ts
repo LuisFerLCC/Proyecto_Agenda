@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { ConnectionType } from '@capacitor/network';
+
 import { IonicModule } from '../modules/ionic/ionic.module';
+
+import { NubeService } from '../services/nube.service';
 
 @Component({
   selector: 'app-ajustes',
@@ -10,4 +14,10 @@ import { IonicModule } from '../modules/ionic/ionic.module';
   standalone: true,
   imports: [IonicModule, FormsModule],
 })
-export class AjustesPage {}
+export class AjustesPage {
+  constructor(public nubeService: NubeService) {}
+
+  async cambiarRedPreferida(redPreferida: ConnectionType) {
+    this.nubeService.cambiarRedPreferida(redPreferida);
+  }
+}

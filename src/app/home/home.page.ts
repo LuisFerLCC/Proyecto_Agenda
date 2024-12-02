@@ -32,8 +32,8 @@ export class HomePage {
     this.eventosFiltrados.set(eventos);
   }
 
-  async initNube() {
+  async activarNube() {
     this.botonNubeDesactivado = true;
-    await this.nubeService.init();
+    await this.nubeService.activar();
   }
 }
