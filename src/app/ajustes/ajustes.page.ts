@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -15,7 +16,11 @@ import { NubeService } from '../services/nube.service';
   imports: [IonicModule, FormsModule],
 })
 export class AjustesPage {
-  constructor(public nubeService: NubeService) {}
+  constructor(public nubeService: NubeService, private location: Location) {}
+
+  atras() {
+    this.location.back();
+  }
 
   async cambiarRedPreferida(redPreferida: ConnectionType) {
     this.nubeService.cambiarRedPreferida(redPreferida);

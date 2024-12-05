@@ -60,6 +60,10 @@ Dirección: ${this.evento.direccion}`,
     });
   }
 
+  atras() {
+    this.location.back();
+  }
+
   ionViewWillEnter() {
     const id = this.route.snapshot.paramMap.get('id');
     this.eventosService

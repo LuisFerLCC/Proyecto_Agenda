@@ -4,6 +4,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
   addOutline,
+  arrowBackOutline,
   camera,
   close,
   cloud,
@@ -28,6 +29,7 @@ export class AppComponent {
   constructor() {
     addIcons({
       'add-outline': addOutline,
+      'arrow-back-outline': arrowBackOutline,
       camera,
       close,
       cloud,
